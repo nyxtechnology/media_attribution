@@ -10,7 +10,9 @@ use Drupal\Core\Url;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
-
+use Drupal\taxonomy\Entity\Term;
+use Drupal\file\Entity\File;
+use Drupal\Component\Serialization\Yaml;
 
 /**
  * Implements hook_help().
@@ -67,6 +69,9 @@ function entity_embed_attribution_modules_installed($modules) {
         'settings' => ['view_mode' => 'default', 'link' => ''],
       ])->save();
   }
+
+  // Load default license terms from the module config.
+  entity_embed_attribution_load_default_licenses();
 }
 
 /**
@@ -76,7 +81,8 @@ function entity_embed_attribution_modules_installed($modules) {
  */
 function entity_embed_attribution_preprocess_entity_embed_container(&$variables) {
 
-  if ($attributions = $variables['element']['#entity']->get('field_image_attribution')->referencedEntities()) {
+  if ($attributions = $variables['element']['#entity']->get('field_image_attribution')
+    ->referencedEntities()) {
     $attribution = $attributions[0];
     $author = $attribution->get('field_attribution_author')->getValue()[0];
 
@@ -112,13 +118,54 @@ function entity_embed_attribution_preprocess_entity_embed_container(&$variables)
 
     ];
   }
-//  $attribution_string = \Drupal::render($attribution_text);
+  //  $attribution_string = \Drupal::render($attribution_text);
 
-  $variables['children'] = ['first' =>  ['#type' => 'markup', '#markup' => render($variables['children'])],
+  $variables['children'] = [
+    'first' => [
+      '#type' => 'markup',
+      '#markup' => render($variables['children'])
+    ],
     $attribution_text
   ];
+}
 
+/**
+ * Read the list of pre-defined Creative Commons licenses and create corresponding taxonomy terms.
+ */
+function entity_embed_attribution_load_default_licenses() {
+  $file_path = drupal_get_path('module', 'entity_embed_attribution') . '/entity_embed_attribution.default.licenses.yml';
+  $file_contents = file_get_contents($file_path);
+  $license_data = Yaml::decode($file_contents);
 
+  foreach ($license_data as $license_item) {
+    entity_embed_attribution_create_license_term($license_item['title'],$license_item['short_label'], $license_item['icon_file'], $license_item['url']);
+  }
+}
 
+function entity_embed_attribution_create_license_term($term_title, $term_short_label, $icon_filename, $license_url) {
+  $icon_file_uri = drupal_get_path('module', 'entity_embed_attribution') . "/images/$icon_filename";
 
+  // Just in case the file has already been created.
+  $icon_files = \Drupal::entityTypeManager()
+    ->getStorage('file')
+    ->loadByProperties(['uri' => $icon_file_uri]);
+  $icon_file = reset($icon_files);
+  // if not create a file
+  if (!$icon_file) {
+    $icon_file = File::create([
+      'uri' => $icon_file_uri,
+    ]);
+    $icon_file->save();
+  }
+
+  $tid = Term::create([
+    'name' =>  $term_title,
+    'vid' => 'licenses',
+    'field_license_link' =>  ['title' => $term_short_label, 'uri' => $license_url],
+    'field_license_icon' => [
+      'target_id' => $icon_file->id(),
+      'alt' => $term_title,
+      'title' => $term_title,
+    ]
+  ])->save();
 }
