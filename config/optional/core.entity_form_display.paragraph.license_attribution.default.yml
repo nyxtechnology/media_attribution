@@ -8,6 +8,8 @@ dependencies:
     - paragraphs.paragraphs_type.license_attribution
   module:
     - link
+_core:
+  default_config_hash: TX7aCKFhicHNk-Ce09bQTNTKUZhRXX0QsSWzjuGutWA
 id: paragraph.license_attribution.default
 targetEntityType: paragraph
 bundle: license_attribution
@@ -31,12 +33,9 @@ content:
     region: content
   field_license:
     weight: 2
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
 hidden:
   created: true
