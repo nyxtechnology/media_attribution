@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_license
+    - paragraphs.paragraphs_type.license_attribution
+    - taxonomy.vocabulary.licenses
+  module:
+    - require_on_publish
+third_party_settings:
+  require_on_publish:
+    require_on_publish: false
+id: paragraph.license_attribution.field_license
+field_name: field_license
+entity_type: paragraph
+bundle: license_attribution
+label: License
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      licenses: licenses
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Licenses
+vid: licenses
+description: 'Licenses for content and attribution.'
+hierarchy: 0
+weight: 0

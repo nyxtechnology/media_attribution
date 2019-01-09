@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_license_link
+    - taxonomy.vocabulary.licenses
+  module:
+    - link
+    - require_on_publish
+third_party_settings:
+  require_on_publish:
+    require_on_publish: false
+id: taxonomy_term.licenses.field_license_link
+field_name: field_license_link
+entity_type: taxonomy_term
+bundle: licenses
+label: 'License link'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

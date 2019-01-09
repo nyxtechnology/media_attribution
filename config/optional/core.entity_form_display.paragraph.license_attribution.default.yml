@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.license_attribution.field_attribution_author
+    - field.field.paragraph.license_attribution.field_attribution_source
+    - field.field.paragraph.license_attribution.field_license
+    - paragraphs.paragraphs_type.license_attribution
+  module:
+    - link
+id: paragraph.license_attribution.default
+targetEntityType: paragraph
+bundle: license_attribution
+mode: default
+content:
+  field_attribution_author:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_attribution_source:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_license:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

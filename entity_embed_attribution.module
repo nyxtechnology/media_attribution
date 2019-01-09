@@ -1,0 +1,124 @@
+<?php
+
+/**
+ * @file
+ * Contains entity_embed_attribution.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+
+
+/**
+ * Implements hook_help().
+ */
+function entity_embed_attribution_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the entity_embed_attribution module.
+    case 'help.page.entity_embed_attribution':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Attach an attribution and license info to embedded media') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_modules_installed().
+ *
+ * Add attribution form to media embed forms and view displays.
+ */
+function entity_embed_attribution_modules_installed($modules) {
+  foreach (['media_browser', 'default'] as $form_variant) {
+    $form_entity = EntityFormDisplay::load("media.image.$form_variant");
+    $form_entity->setComponent('field_image_attribution',
+      [
+        'region' => 'content',
+        'settings' => [
+          'title' => 'Paragraph',
+          'title_plural' => 'Paragraphs',
+          'edit_mode' => 'open',
+          'closed_mode' => 'summary',
+          'autocollapse' => 'none',
+          'closed_mode_threshold' => 0,
+          'add_mode' => 'dropdown',
+          'form_display_mode' => 'default',
+          'default_paragraph_type' => '',
+          'features' => [
+            'duplicate' => 'duplicate',
+            'collapse_edit_all' => 'collapse_edit_all',
+          ]
+        ],
+        'type' => 'paragraphs',
+      ])
+      ->save();
+  }
+
+  foreach (['embedded', 'default'] as $entity_view_variant) {
+    $view_entity = EntityViewDisplay::load("media.image.$entity_view_variant");
+    $view_entity->setComponent('field_image_attribution', [
+        'type' => 'entity_reference_revisions_entity_view',
+        'label' => 'hidden',
+        'settings' => ['view_mode' => 'default', 'link' => ''],
+      ])->save();
+  }
+}
+
+/**
+ * Implementation of hook_preprocess_entity_embed_container().
+ *
+ * @param $variables
+ */
+function entity_embed_attribution_preprocess_entity_embed_container(&$variables) {
+
+  if ($attributions = $variables['element']['#entity']->get('field_image_attribution')->referencedEntities()) {
+    $attribution = $attributions[0];
+    $author = $attribution->get('field_attribution_author')->getValue()[0];
+
+    $source = $attribution->get('field_attribution_source')->getValue()[0];
+    $license = $attribution->get('field_license')->entity;
+    $license_link = $license->get('field_license_link')->getValue()[0];
+
+    $attribution_text = [
+      'source' => [
+        '#type' => 'link',
+        '#title' => $source['title'],
+        '#prefix' => "<br>&ldquo;<cite>",
+        '#suffix' => "</cite>&rdquo;",
+        '#url' => Url::fromUri($source['uri']),
+      ],
+    ];
+  }
+  if (!empty($author)) {
+    $attribution_text['author'] = [
+      '#type' => 'link',
+      '#title' => $author['title'],
+      '#prefix' => ' ' . t('by') . ' ',
+      '#url' => Url::fromUri($author['uri']),
+    ];
+  }
+  if (!empty($license_link)) {
+    $attribution_text['license'] = [
+      '#type' => 'link',
+      '#title' => $license_link['title'],
+      '#prefix' => ' ' . t('is licensec under') . ' ',
+      '#url' => Url::fromUri($license_link['uri']),
+      '#suffix' => '.',
+
+    ];
+  }
+//  $attribution_string = \Drupal::render($attribution_text);
+
+  $variables['children'] = ['first' =>  ['#type' => 'markup', '#markup' => render($variables['children'])],
+    $attribution_text
+  ];
+
+
+
+
+}

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: license_attribution
+label: 'License Attribution'
+icon_uuid: null
+description: 'Indicate the source and license conditions of a piece of content.'
+behavior_plugins: {  }

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/entity_embed_attribution",
+  "type": "drupal-module",
+  "description": "Attach an attribution and license info to embedded media",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/entity_embed_attribution",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/entity_embed_attribution",
+    "source": "http://cgit.drupalcode.org/entity_embed_attribution"
+  },
+  "require": { }
+}
