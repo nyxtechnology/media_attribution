@@ -10,5 +10,13 @@
     "issues": "https://www.drupal.org/project/issues/entity_embed_attribution",
     "source": "http://cgit.drupalcode.org/entity_embed_attribution"
   },
-  "require": { }
+  "require": { },
+  "extra": {
+    "enable-patching": true,
+    "patches": {
+      "drupal/paragraphs": {
+        "Integrity constraint violation: 1048 Column 'langcode' cannot be null": "https://www.drupal.org/files/issues/paragraphs-missing-langcode-2901390-9.patch"
+      }
+    }
+  }
 }
