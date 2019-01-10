@@ -2,11 +2,7 @@ langcode: en
 status: true
 dependencies:
   module:
-    - lightning_core
     - paragraphs
-third_party_settings:
-  lightning_core:
-    description: ''
 id: paragraph.license_attribution
 label: 'License attribution'
 targetEntityType: paragraph

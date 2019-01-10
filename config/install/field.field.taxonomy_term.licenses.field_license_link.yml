@@ -6,10 +6,6 @@ dependencies:
     - taxonomy.vocabulary.licenses
   module:
     - link
-    - require_on_publish
-third_party_settings:
-  require_on_publish:
-    require_on_publish: false
 id: taxonomy_term.licenses.field_license_link
 field_name: field_license_link
 entity_type: taxonomy_term

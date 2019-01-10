@@ -36,40 +36,43 @@ function entity_embed_attribution_help($route_name, RouteMatchInterface $route_m
  * Add attribution form to media embed forms and view displays.
  */
 function entity_embed_attribution_modules_installed($modules) {
-  foreach (['media_browser', 'default'] as $form_variant) {
-    $form_entity = EntityFormDisplay::load("media.image.$form_variant");
-    $form_entity->setComponent('field_image_attribution',
-      [
-        'region' => 'content',
-        'settings' => [
-          'title' => 'Paragraph',
-          'title_plural' => 'Paragraphs',
-          'edit_mode' => 'open',
-          'closed_mode' => 'summary',
-          'autocollapse' => 'none',
-          'closed_mode_threshold' => 0,
-          'add_mode' => 'dropdown',
-          'form_display_mode' => 'default',
-          'default_paragraph_type' => '',
-          'features' => [
-            'duplicate' => 'duplicate',
-            'collapse_edit_all' => 'collapse_edit_all',
-          ]
-        ],
-        'type' => 'paragraphs',
-      ])
-      ->save();
-  }
 
-  foreach (['embedded', 'default'] as $entity_view_variant) {
+  foreach (['default', 'media_browser'] as $form_variant) {
+    $form_entity = EntityFormDisplay::load("media.image.$form_variant");
+    if (!empty($form_entity)) {
+      $form_entity->setComponent('field_image_attribution',
+        [
+          'region' => 'content',
+          'settings' => [
+            'title' => 'Paragraph',
+            'title_plural' => 'Paragraphs',
+            'edit_mode' => 'open',
+            'closed_mode' => 'summary',
+            'autocollapse' => 'none',
+            'closed_mode_threshold' => 0,
+            'add_mode' => 'dropdown',
+            'form_display_mode' => 'default',
+            'default_paragraph_type' => '',
+            'features' => [
+              'duplicate' => 'duplicate',
+              'collapse_edit_all' => 'collapse_edit_all',
+            ]
+          ],
+          'type' => 'paragraphs',
+        ])
+        ->save();
+    }
+  }
+  foreach (['default', 'embedded'] as $entity_view_variant) {
     $view_entity = EntityViewDisplay::load("media.image.$entity_view_variant");
-    $view_entity->setComponent('field_image_attribution', [
+    if (!empty($view_entity)) {
+      $view_entity->setComponent('field_image_attribution', [
         'type' => 'entity_reference_revisions_entity_view',
         'label' => 'hidden',
         'settings' => ['view_mode' => 'default', 'link' => ''],
       ])->save();
+    }
   }
-
   // Load default license terms from the module config.
   entity_embed_attribution_load_default_licenses();
 }
@@ -118,7 +121,6 @@ function entity_embed_attribution_preprocess_entity_embed_container(&$variables)
 
     ];
   }
-  //  $attribution_string = \Drupal::render($attribution_text);
 
   $variables['children'] = [
     'first' => [

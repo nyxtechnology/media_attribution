@@ -7,10 +7,7 @@ dependencies:
     - paragraphs.paragraphs_type.license_attribution
   module:
     - entity_reference_revisions
-    - require_on_publish
 third_party_settings:
-  require_on_publish:
-    require_on_publish: false
 id: media.image.field_image_attribution
 field_name: field_image_attribution
 entity_type: media

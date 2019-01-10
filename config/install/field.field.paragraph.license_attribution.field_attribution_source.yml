@@ -6,10 +6,6 @@ dependencies:
     - paragraphs.paragraphs_type.license_attribution
   module:
     - link
-    - require_on_publish
-third_party_settings:
-  require_on_publish:
-    require_on_publish: false
 id: paragraph.license_attribution.field_attribution_source
 field_name: field_attribution_source
 entity_type: paragraph
