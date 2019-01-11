@@ -1,8 +1,0 @@
-name: 'Entity Embed Attribution'
-type: module
-description: 'Attach an attribution and license info to embedded media'
-core: 8.x
-package: 'media'
-dependencies:
-  - media
-  - paragraphs
