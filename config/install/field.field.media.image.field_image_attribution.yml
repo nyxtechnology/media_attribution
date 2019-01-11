@@ -7,7 +7,6 @@ dependencies:
     - paragraphs.paragraphs_type.license_attribution
   module:
     - entity_reference_revisions
-third_party_settings:
 id: media.image.field_image_attribution
 field_name: field_image_attribution
 entity_type: media

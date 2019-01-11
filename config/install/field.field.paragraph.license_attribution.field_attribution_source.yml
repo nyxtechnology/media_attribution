@@ -10,7 +10,7 @@ id: paragraph.license_attribution.field_attribution_source
 field_name: field_attribution_source
 entity_type: paragraph
 bundle: license_attribution
-label: Source
+label: Media Source
 description: 'Link to the work''s original source. Set the link text as the title of the work.'
 required: false
 translatable: false

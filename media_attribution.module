@@ -132,7 +132,7 @@ function media_attribution_preprocess_entity_embed_container(&$variables) {
 }
 
 /**
- * Read the list of pre-defined Creative Commons licenses and create corresponding taxonomy terms.
+ * Read the list of pre-defined Creative Commons media_attribution_licenses and create corresponding taxonomy terms.
  */
 function media_attribution_load_default_licenses() {
   $file_path = drupal_get_path('module', 'media_attribution') . '/media_attribution.default.licenses.yml';
@@ -162,7 +162,7 @@ function media_attribution_create_license_term($term_title, $term_short_label, $
 
   $tid = Term::create([
     'name' =>  $term_title,
-    'vid' => 'licenses',
+    'vid' => 'media_attribution_licenses',
     'field_license_link' =>  ['title' => $term_short_label, 'uri' => $license_url],
     'field_license_icon' => [
       'target_id' => $icon_file->id(),

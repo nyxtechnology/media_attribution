@@ -3,13 +3,13 @@ status: true
 dependencies:
   config:
     - field.storage.taxonomy_term.field_license_icon
-    - taxonomy.vocabulary.licenses
+    - taxonomy.vocabulary.media_attribution_licenses
   module:
     - image
-id: taxonomy_term.licenses.field_license_icon
+id: taxonomy_term.media_attribution_licenses.field_license_icon
 field_name: field_license_icon
 entity_type: taxonomy_term
-bundle: licenses
+bundle: media_attribution_licenses
 label: 'License Icon'
 description: 'Icon used to identify license rights, standardized by <a href="https://www.creativecommons.org/">Creative Commons.</a>.'
 required: false

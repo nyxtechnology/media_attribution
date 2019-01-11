@@ -4,7 +4,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_license
     - paragraphs.paragraphs_type.license_attribution
-    - taxonomy.vocabulary.licenses
+    - taxonomy.vocabulary.media_attribution_licenses
 id: paragraph.license_attribution.field_license
 field_name: field_license
 entity_type: paragraph
@@ -19,7 +19,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      licenses: licenses
+      media_attribution_licenses: media_attribution_licenses
     sort:
       field: name
       direction: asc

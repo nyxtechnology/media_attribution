@@ -3,13 +3,13 @@ status: true
 dependencies:
   config:
     - field.storage.taxonomy_term.field_license_link
-    - taxonomy.vocabulary.licenses
+    - taxonomy.vocabulary.media_attribution_licenses
   module:
     - link
-id: taxonomy_term.licenses.field_license_link
+id: taxonomy_term.media_attribution_licenses.field_license_link
 field_name: field_license_link
 entity_type: taxonomy_term
-bundle: licenses
+bundle: media_attribution_licenses
 label: 'License link'
 description: ''
 required: true

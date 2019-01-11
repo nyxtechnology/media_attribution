@@ -2,17 +2,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.licenses.field_license_icon
-    - field.field.taxonomy_term.licenses.field_license_link
-    - taxonomy.vocabulary.licenses
+    - field.field.taxonomy_term.media_attribution_licenses.field_license_icon
+    - field.field.taxonomy_term.media_attribution_licenses.field_license_link
+    - taxonomy.vocabulary.media_attribution_licenses
   module:
     - image
     - link
     - text
-third_party_settings:
-id: taxonomy_term.licenses.default
+id: taxonomy_term.media_attribution_licenses.default
 targetEntityType: taxonomy_term
-bundle: licenses
+bundle: media_attribution_licenses
 mode: default
 content:
   description:

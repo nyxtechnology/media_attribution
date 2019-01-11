@@ -10,7 +10,7 @@ id: paragraph.license_attribution.field_attribution_author
 field_name: field_attribution_author
 entity_type: paragraph
 bundle: license_attribution
-label: Author
+label: Original Author
 description: 'Link to the author''s home page.'
 required: false
 translatable: false

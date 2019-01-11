@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies: {  }
 name: Licenses
-vid: licenses
+vid: media_attribution_licenses
 description: 'Licenses for content and attribution.'
 hierarchy: 0
 weight: 0
