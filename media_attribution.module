@@ -91,8 +91,8 @@ function media_attribution_preprocess_entity_embed_container(&$variables) {
 
     $source = $attribution->get('field_attribution_source')->getValue()[0];
     $license = $attribution->get('field_license')->entity;
-    $license_link = $license->get('field_license_link')->getValue()[0];
-
+    $license_link = !empty($license) ? $license->get('field_license_link')->getValue()[0] : FALSE;
+    $attribution_note = $attribution->get('field_attribution_note')->getValue()[0];
     $attribution_text = [
       'source' => [
         '#type' => 'link',
@@ -109,6 +109,7 @@ function media_attribution_preprocess_entity_embed_container(&$variables) {
       '#title' => $author['title'],
       '#prefix' => ' ' . t('by') . ' ',
       '#url' => Url::fromUri($author['uri']),
+      '#suffix' => '. ',
     ];
   }
   if (!empty($license_link)) {
@@ -121,7 +122,13 @@ function media_attribution_preprocess_entity_embed_container(&$variables) {
 
     ];
   }
-
+  if (!empty($attribution_note)) {
+    $attribution_text['note'] = [
+      '#type' => 'markup',
+      '#markup' => $attribution_note['value'],
+      '#prefix' => ' ',
+    ];
+  }
   $variables['children'] = [
     'first' => [
       '#type' => 'markup',
