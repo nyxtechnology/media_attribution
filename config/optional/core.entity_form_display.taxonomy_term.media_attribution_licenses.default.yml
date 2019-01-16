@@ -10,6 +10,10 @@ dependencies:
     - entity_browser
     - link
     - text
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 _core:
   default_config_hash: GeroQ_nB3tqP5g0Z5B4UShGyIomjdHA8hDn73kSFYgc
 id: taxonomy_term.media_attribution_licenses.default

@@ -11,6 +11,10 @@ dependencies:
   module:
     - link
     - text
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 _core:
   default_config_hash: WCcyeF8AktyxDRFDYOVNNyfYpTfjnlsm53vdo1EP968
 id: paragraph.license_attribution.default

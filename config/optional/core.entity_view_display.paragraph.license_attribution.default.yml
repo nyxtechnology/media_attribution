@@ -8,6 +8,10 @@ dependencies:
     - paragraphs.paragraphs_type.license_attribution
   module:
     - link
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 id: paragraph.license_attribution.default
 targetEntityType: paragraph
 bundle: license_attribution

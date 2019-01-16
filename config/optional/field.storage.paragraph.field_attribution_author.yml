@@ -4,6 +4,10 @@ dependencies:
   module:
     - link
     - paragraphs
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 id: paragraph.field_attribution_author
 field_name: field_attribution_author
 entity_type: paragraph

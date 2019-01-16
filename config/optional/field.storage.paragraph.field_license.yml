@@ -4,6 +4,10 @@ dependencies:
   module:
     - paragraphs
     - taxonomy
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 id: paragraph.field_license
 field_name: field_license
 entity_type: paragraph

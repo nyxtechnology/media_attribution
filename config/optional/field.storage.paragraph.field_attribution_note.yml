@@ -4,6 +4,10 @@ dependencies:
   module:
     - paragraphs
     - text
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 third_party_settings: {  }
 id: paragraph.field_attribution_note
 field_name: field_attribution_note

@@ -9,6 +9,10 @@ dependencies:
     - image
     - link
     - text
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 id: taxonomy_term.media_attribution_licenses.default
 targetEntityType: taxonomy_term
 bundle: media_attribution_licenses

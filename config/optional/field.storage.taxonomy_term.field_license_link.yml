@@ -4,6 +4,10 @@ dependencies:
   module:
     - link
     - taxonomy
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 id: taxonomy_term.field_license_link
 field_name: field_license_link
 entity_type: taxonomy_term

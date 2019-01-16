@@ -5,6 +5,11 @@ dependencies:
     - field.storage.paragraph.field_license
     - paragraphs.paragraphs_type.license_attribution
     - taxonomy.vocabulary.media_attribution_licenses
+  module:
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 id: paragraph.license_attribution.field_license
 field_name: field_license
 entity_type: paragraph

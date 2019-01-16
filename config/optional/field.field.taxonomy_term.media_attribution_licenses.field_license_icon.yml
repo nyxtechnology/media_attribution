@@ -6,6 +6,10 @@ dependencies:
     - taxonomy.vocabulary.media_attribution_licenses
   module:
     - image
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 id: taxonomy_term.media_attribution_licenses.field_license_icon
 field_name: field_license_icon
 entity_type: taxonomy_term

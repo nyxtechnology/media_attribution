@@ -1,6 +1,12 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+  - media_attribution
+  enforced:
+    module:
+      - media_attribution
+
 id: license_attribution
 label: 'License Attribution'
 icon_uuid: null

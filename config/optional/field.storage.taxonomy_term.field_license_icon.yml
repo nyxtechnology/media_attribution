@@ -5,6 +5,10 @@ dependencies:
     - file
     - image
     - taxonomy
+    - media_attribution
+  enforced:
+    module:
+      - media_attribution
 id: taxonomy_term.field_license_icon
 field_name: field_license_icon
 entity_type: taxonomy_term
