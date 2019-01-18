@@ -93,15 +93,16 @@ function media_attribution_preprocess_entity_embed_container(&$variables) {
     $license = $attribution->get('field_license')->entity;
     $license_link = !empty($license) ? $license->get('field_license_link')->getValue()[0] : FALSE;
     $attribution_note = $attribution->get('field_attribution_note')->getValue()[0];
-    $attribution_text = [
-      'source' => [
+    $attribution_text = [];
+    if (!empty($source['uri'])) {
+      $attribution_text['source'] = [
         '#type' => 'link',
         '#title' => $source['title'],
         '#prefix' => "<br>&ldquo;<cite>",
         '#suffix' => "</cite>&rdquo;",
         '#url' => Url::fromUri($source['uri']),
-      ],
-    ];
+      ];
+    }
   }
   if (!empty($author)) {
     $attribution_text['author'] = [
