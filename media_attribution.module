@@ -84,8 +84,9 @@ function media_attribution_modules_installed($modules) {
  */
 function media_attribution_preprocess_entity_embed_container(&$variables) {
 
-  if ($attributions = $variables['element']['#entity']->get('field_image_attribution')
-    ->referencedEntities()) {
+  if ($variables['element']['#entity']->hasField('field_image_attribution')
+      && $attributions = $variables['element']['#entity']->get('field_image_attribution')
+      ->referencedEntities()) {
     $attribution = $attributions[0];
     $author = $attribution->get('field_attribution_author')->getValue()[0];
 
