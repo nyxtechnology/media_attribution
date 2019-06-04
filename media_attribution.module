@@ -118,7 +118,7 @@ function media_attribution_preprocess_entity_embed_container(&$variables) {
     $attribution_text['license'] = [
       '#type' => 'link',
       '#title' => $license_link['title'],
-      '#prefix' => ' ' . t('Licensec under') . ' ',
+      '#prefix' => ' ' . t('Licensed under') . ' ',
       '#url' => Url::fromUri($license_link['uri']),
       '#suffix' => '.',
 
