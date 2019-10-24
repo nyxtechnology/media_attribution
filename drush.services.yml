@@ -1,0 +1,5 @@
+services:
+  media_attribution.commands:
+    class: \Drupal\media_attribution\Commands\MediaAttributionCommands
+    tags:
+      - { name: drush.command }

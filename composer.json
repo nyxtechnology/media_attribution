@@ -2,7 +2,9 @@
   "name": "drupal/media_attribution",
   "type": "drupal-module",
   "description": "Attach an attribution and license info to embedded media",
-  "keywords": ["Drupal"],
+  "keywords": [
+    "Drupal"
+  ],
   "license": "GPL-2.0+",
   "homepage": "https://www.drupal.org/project/media_attribution",
   "minimum-stability": "dev",
@@ -10,5 +12,17 @@
     "issues": "https://www.drupal.org/project/issues/media_attribution",
     "source": "http://cgit.drupalcode.org/media_attribution"
   },
-  "require": { }
+  "autoload": {
+    "psr-4": {
+      "Drupal\\media_attribution\\": "src/"
+    }
+  },
+  "require": {},
+  "extra": {
+    "drush": {
+      "services": {
+        "drush.services.yml": "^9"
+      }
+    }
+  }
 }

@@ -51,3 +51,15 @@ https://wiki.creativecommons.org/wiki/best_practices_for_attribution
 Installing the module creates License taxonomy term entries for all of the use
 variations of the international Creative Commons licenses. These can be
 edited, and other license types can be added as needed.
+
+## Bulk-loading Licenses via Drush
+
+Run `drush help media_attribution:load_licenses` for how to load license data from a YAML file.
+
+# Authors
+
+Alexander O'Neill ([alxp](https://drupal.org/u/alxp))
+
+# Sponsoring Organization
+
+[University of Prince Edward Island Robertson Library](https://library.upei.ca/)

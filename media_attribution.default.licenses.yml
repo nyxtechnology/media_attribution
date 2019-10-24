@@ -2,30 +2,30 @@
 -
   title: Attribution 4.0 International (CC BY 4.0)
   short_label: CC BY 4.0
-  icon_file: by.png
+  icon_file: images/by.png
   url: https://creativecommons.org/licenses/by/4.0/
 -
   title: Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
   short_label: CC BY-NC 4.0
-  icon_file: by-nc.png
+  icon_file: images/by-nc.png
   url: https://creativecommons.org/licenses/by-nc/4.0/
 -
   title: Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)
   short_label: CC BY-ND 4.0
-  icon_file: by-nd.png
+  icon_file: images/by-nd.png
   url: https://creativecommons.org/licenses/by-nd/4.0/
 -
   title: Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
   short_label: CC BY-SA 4.0
-  icon_file: by-sa.png
+  icon_file: images/by-sa.png
   url: https://creativecommons.org/licenses/by-sa/4.0/
 -
   title: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
   short_label: CC BY-NC-ND 4.0
-  icon_file: by-nc-nd.png
+  icon_file: images/by-nc-nd.png
   url: https://creativecommons.org/licenses/by-nc-nd/4.0/
 -
   title: Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
   short_label: CC BY-NC-SA 4.0
-  icon_file: by-nc-sa.png
+  icon_file: images/by-nc-sa.png
   url: https://creativecommons.org/licenses/by-nc-sa/4.0/
