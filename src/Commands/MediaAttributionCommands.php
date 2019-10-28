@@ -38,7 +38,7 @@ class MediaAttributionCommands extends DrushCommands {
 
     foreach ($license_data as $license_item) {
       $icon_file_path = isset($license_item['icon_file']) ? $cwd . '/' . $license_item['icon_file'] : '';
-      LicenseLoader::createLicenseTerm($license_item['title'],$license_item['short_label'], $icon_file_path, $license_item['url']);
+      LicenseLoader::createOrUpdateLicenseTerm($license_item['title'],$license_item['short_label'], $icon_file_path, $license_item['url']);
     }
 
   }
