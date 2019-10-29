@@ -7,8 +7,7 @@ use Drupal\taxonomy\Entity\Term;
 use Drupal\file\Entity\File;
 use phpDocumentor\Reflection\Types\Integer;
 
-class LicenseLoader
-{
+class LicenseLoader {
 
   /**
    * Create a new license term with the given values.
@@ -27,12 +26,11 @@ class LicenseLoader
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  public static function createOrUpdateLicenseTerm($term_title, $term_short_label, $icon_file_path, $license_url)
-  {
+  public static function createOrUpdateLicenseTerm($term_title, $term_short_label, $icon_file_path, $license_url) {
     $tids = array_values(\Drupal::entityQuery('taxonomy_term')
       ->condition('name', $term_title)
       ->execute());
-    print_r($tids);
+
     if ($tids) {
       self::updateLicenseTerm($tids[0], $term_title, $term_short_label, $icon_file_path, $license_url);
       return $tids[0];
@@ -125,9 +123,16 @@ class LicenseLoader
     // if not create a file
 
     if (!$icon_file) {
-      $fs = \Drupal::service('file_system');
-      $icon_uri = $fs->copy($icon_file_path, 'public://');
-
+      if (substr($icon_file_path, 0, strlen(DRUPAL_ROOT)) == DRUPAL_ROOT) {
+        $icon_uri = substr($icon_file_path, strlen(DRUPAL_ROOT), strlen($icon_file_path));
+      }
+      elseif (substr($icon_file_path, 0, 1) != '/') {
+        $icon_uri = $icon_file_path;
+      }
+      else {
+        $fs = \Drupal::service('file_system');
+        $icon_uri = $fs->copy($icon_file_path, 'public://');
+      }
       $icon_file = File::create([
         'uri' => $icon_uri,
       ]);
